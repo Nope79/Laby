@@ -18,16 +18,18 @@ public:
 	int width;
 	pair <int, int> start;
 	pair <int, int> end;
-	int difficulty; // x <= 20: 0, x <= 50: 1 <= 100: 2, x > 100 : 3
+	int difficulty; // x <= 19: 0, x <= 49: 1 <= 99: 2, x > 99 : 3
 					// where x is max(height, width)
 	vector <vector <char>> mz;
 	
 	Maze(int height, int width){
+		height = (height / 2 * 2) + 1;
+		width = (width / 2 * 2) + 1;
 		this->height = height;
 		this->width = width;
 		this->mz = vector<vector<char>>(height, vector<char>(width, '.'));
 		int maxi = max(height, width);
-		this->difficulty = maxi <= 20 ? 0 : maxi <= 50 ? 1 : maxi <= 100 ? 2 : 3;
+		this->difficulty = maxi <= 19 ? 0 : maxi <= 49 ? 1 : maxi <= 99 ? 2 : 3;
 		pair <pair <int, int>, pair <int, int>> c = gen_coordinates(height, width);
 		this->start = c.first;
 		this->end = c.second;
@@ -71,14 +73,16 @@ public:
 			i = rows(generator);
 			j = columns(generator);
 			if(y == 1) end = {0, j}; // maze[0][x]
-			else if(y == 2) end = {i, m}; // maze[x][m-1]
-			else if(y == 3) end = {n, j}; // maze[n-1][x]
-			else if(y == 4) end = {i, 0}; // maze[x][0]
+			if(y == 2) end = {i, m}; // maze[x][m-1]
+			if(y == 3) end = {n, j}; // maze[n-1][x]
+			if(y == 4) end = {i, 0}; // maze[x][0]
 		} 
 		
 		// We must stabilize the components (odd)
 		start = stabilize(x, start);
 		end = stabilize(y, end);
+		
+		gen_paths(x, start);
 		
 		return {start, end};
 	}
@@ -89,5 +93,64 @@ public:
 		else if(x == 2 || x == 4) p.first = (p.first / 2 * 2) + 1;
 		
 		return p;
+	}
+	
+	void gen_paths(int x, pair <int, int> start){
+		
+		int consx = 20, consy = 20;
+		int advance_x, advance_y;
+		
+		if(x == 1) start.first++;
+		if(x == 2) start.second--;
+		if(x == 3) start.first--;
+		if(x == 4) start.second++;
+		
+		mz[start.first][start.second] = '#';
+		
+		int direction;
+		
+		int con = 0;
+		
+		while(con < 10 && mz[start.first+1][start.second] != 'E' && mz[start.first-1][start.second] != 'E' && mz[start.first][start.second+1] != 'E' && mz[start.first][start.second-1] != 'E'){
+			
+			cout << con++ << endl;
+			
+			direction = dist(generator);
+			if(direction == 1) advance_x = consx, advance_y = 0;
+			if(direction == 2) advance_x = 0, advance_y = -consy;
+			if(direction == 3) advance_x = -consx, advance_y = 0;
+			if(direction == 4) advance_x = 0, advance_y = consy;
+			
+			cout << "coor inicio: " << start.first << " " << start.second << endl;
+			
+			int a = start.first + advance_x, b = start.second + advance_y;
+			cout << a << " " << b << endl;
+			
+			if(a >= 0 && a < height && b >= 0 && b < width){
+				
+				if(!advance_x){
+					
+					if(start.second < a)
+					for(int i = start.first+1; i <= a; i++){
+						mz[i][start.second] = '#';
+					}
+					else
+					for(int i = start.first-1; i >= a; i--){
+						mz[i][start.second] = '#';
+					}
+				}else{
+					if(start.second < b)
+					for(int i = start.second+1; i <= b; i++){
+						mz[start.first][i] = '#';
+					}
+					else
+					for(int i = start.second-1; i >= b; i--){
+						mz[start.first][i] = '#';
+					}
+				}
+				start.first = a;
+				start.second = b;
+			}
+		}
 	}
 };

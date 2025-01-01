@@ -7,14 +7,14 @@ using namespace std;
  
 int main() {
 	
-	Maze m(3, 3);    
+	Maze m(49, 49);     
 	m.show();
-	m.attributes(); 
+	m.attributes();  
 	
-	cout << endl << endl;
+	cout << endl << endl; 
 	
-	Solve s(m);
-	s.print();
-	
+	//Solve s(m);
+	//s.print();
+	 
 	return 0;
 }
