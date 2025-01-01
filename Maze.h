@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <vector>
 #include <random>
+#include <algorithm>
  
 using namespace std;
 
@@ -82,7 +83,7 @@ public:
 		start = stabilize(x, start);
 		end = stabilize(y, end);
 		
-		gen_paths(x, start);
+		gen_paths(x, start, end);
 		
 		return {start, end};
 	}
@@ -95,9 +96,9 @@ public:
 		return p;
 	}
 	
-	void gen_paths(int x, pair <int, int> start){
+	void gen_paths(int x, pair <int, int> start, pair <int, int> end){
 		
-		int consx = 20, consy = 20;
+		int consx = 2, consy = 2;
 		int advance_x, advance_y;
 		
 		if(x == 1) start.first++;
@@ -111,46 +112,56 @@ public:
 		
 		int con = 0;
 		
-		while(con < 10 && mz[start.first+1][start.second] != 'E' && mz[start.first-1][start.second] != 'E' && mz[start.first][start.second+1] != 'E' && mz[start.first][start.second-1] != 'E'){
+		if(end.first == 0) end.first++;
+		if(end.first == height-1) end.first--;
+		if(end.second == 0) end.second++;
+		if(end.second == width-1) end.second--;
+		
+		while(con++ < 2000 && mz[start.first+1][start.second] != 'E' && mz[start.first-1][start.second] != 'E' && mz[start.first][start.second+1] != 'E' && mz[start.first][start.second-1] != 'E'){
 			
-			cout << con++ << endl;
+			if(mz[end.first][end.second] != '.') break;
+			
+			int jump = dist(generator);
 			
 			direction = dist(generator);
-			if(direction == 1) advance_x = consx, advance_y = 0;
-			if(direction == 2) advance_x = 0, advance_y = -consy;
-			if(direction == 3) advance_x = -consx, advance_y = 0;
-			if(direction == 4) advance_x = 0, advance_y = consy;
-			
-			cout << "coor inicio: " << start.first << " " << start.second << endl;
+			cout << direction << endl;
+			if(direction == 1) advance_x = -consx, advance_y = 0;
+			if(direction == 2) advance_x = 0, advance_y = consy;
+			if(direction == 3) advance_x = consx, advance_y = 0;
+			if(direction == 4) advance_x = 0, advance_y = -consy;
 			
 			int a = start.first + advance_x, b = start.second + advance_y;
-			cout << a << " " << b << endl;
 			
 			if(a >= 0 && a < height && b >= 0 && b < width){
-				
-				if(!advance_x){
+				if(advance_x != 0){
 					
-					if(start.second < a)
-					for(int i = start.first+1; i <= a; i++){
-						mz[i][start.second] = '#';
-					}
-					else
-					for(int i = start.first-1; i >= a; i--){
-						mz[i][start.second] = '#';
+					if(start.first < a){
+					
+						for(int i = start.first+1; i <= a; i++){
+							mz[i][start.second] = 'N';
+						}
+					}else{
+						
+						for(int i = start.first-1; i >= a; i--){
+							mz[i][start.second] = 'S';
+						}
 					}
 				}else{
-					if(start.second < b)
-					for(int i = start.second+1; i <= b; i++){
-						mz[start.first][i] = '#';
-					}
-					else
-					for(int i = start.second-1; i >= b; i--){
-						mz[start.first][i] = '#';
+					if(start.second < b){
+						
+						for(int i = start.second+1; i <= b; i++){
+							mz[start.first][i] = 'e';
+						}
+					}else{
+						for(int i = start.second-1; i >= b; i--){
+							mz[start.first][i] = 'W';
+						}
 					}
 				}
 				start.first = a;
 				start.second = b;
 			}
 		}
+		cout << "contador: " << con << endl;
 	}
 };
