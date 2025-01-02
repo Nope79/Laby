@@ -1,0 +1,206 @@
+﻿Developer: Nope79
+Maze project
+December 31, 2024
+Contact: nopesep@gmail.com
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+I’ll use the PUP methodology, I’m working alone, but I hope someone joins the party.
+
+
+1.- Inception 
+        Purpose: Apply BFS/DFS algorithm and randomness.
+        Scope: Console project (for now, later I would like to use a game engine).
+        Constraints: I only know C++.
+        
+2.- Requirements
+        Goals:
+                Create an aleatory maze.
+                Solve an aleatory maze.
+                Display an aleatory maze.
+        Modules:
+                Representation.
+                Generation.
+                Solving.
+                Viewing.
+        Milestone:
+                Implement generation.
+                Implement solving.
+                Improve visualization.
+
+
+3.- Building
+        Work in small iterations.
+        Test functionality before moving on to the next.
+        Explicative comments.
+        Maintain a technical diary.
+
+
+4.- Transmission
+        Perform final tests.
+        Improve documentation.
+        Feedback.
+                
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+CREATE MAZE
+
+
+1.- Complexity and challenge
+        Roads variety, long corridors, dead ends, loops and shortcuts.
+        Difficulty levels.
+
+
+2.- Aesthetic appeal
+        Themes, colors, immersion. 
+
+
+3.- Orientation and navigation
+        Beggin and end clearly.
+        Reference points.
+
+
+4.- Accessibility
+
+
+5.- Dynamism
+        Challenge routes.
+        Multiple paths.
+
+
+
+
+Importance:
+Complexity and challenge.                   More important
+Navigation.
+Dynamism.
+Aesthetic appeal.
+Accessibility.                                         Less important
+
+
+By the moment, I guess I’ll finish creating the maze algorithm in three days, working 24 hours in total.
+
+
+1.- Complexity and challenge
+        Multiple paths.
+        Cross.
+        Branches.
+        Loops.
+        Dead ends.
+        Baits.
+
+
+* While designing the maze, I realized that the measurements and components (at least one) must be odd.
+* I was working for 5 hours. I created two classes, Maze and Solve, but by the moment, solve is empty. Maze has some methods and attributes to create the maze and its main path, but it’s very simple, I will do it better, maybe with backtracking. I hope to finish it in 5 hours, but it could be more hours.
