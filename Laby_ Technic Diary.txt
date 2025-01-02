@@ -1,0 +1,194 @@
+﻿Creación del proyecto
+Fecha: 31 de diciembre, 2024
+Duración: 3 horas.
+Objetivo: Montar mi primer proyecto en C++.
+
+
+Actividades:
+Investigar cómo crear un proyecto en C++.
+Entender la sintaxis para trabajar con objetos en C++.
+Trabajar con diferentes archivos en un solo proyecto.
+Crear la clase Maze, con sus atributos y el método para generar un inicio y fin aleatorios.
+Subir avances a Github.
+Documentar.
+
+
+Problemas:
+No pude terminar de forma funcional la generación de los puntos de inicio y fin.
+
+
+Hipótesis:
+Trabajar con los atributos del objeto puede ser volátil.
+Algún error lógico que no pude notar en su momento.
+
+
+Solución:
+Trabajar con variables y modularizar el código.
+Revisar la lógica en el código.
+
+
+Aprendizajes y decisiones:
+Crear proyectos simples de consola en C++.
+Trabajar con clases en proyectos en C++.
+Uso de random, generador y distribuciones.
+
+
+Pendientes:
+Arreglar la generación de los puntos de inicio y fin correctamente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Coordenadas relevantes, clase Solve, imparidad en tamaño, etc.
+Fecha: 01 de enero, 2025
+Duración: 5 horas
+Objetivo: Resolver bugs, empezar la creación del camino principal en el laberinto.
+
+
+Actividades:
+Generé las coordenadas de inicio y fin aleatoriamente.
+Creé la clase Solve, arreglando algunos problemas de por medio.
+Líneas para corregir la paridad en el tamaño del laberinto, así como la imparidad en los movimientos para encontrar la solución principal.
+Documentación del código.
+
+
+Problemas:
+La clase Solve me generaba problemas.
+La clase Maze decía que estaba redeclarando algunas variables, cuando explícitamente no era así.
+
+
+Hipótesis:
+Error de sintaxis para la clase Solve.
+Algo puntual de cómo se trabaja entre clases en C++.
+
+
+Solución:
+Investigar sintaxis para Solve.
+No importar o incluir la clase Maze en la clase Solve.
+Si no se prefiere el punto anterior, se podría modularizar Maze en Maze.h y Maze.cpp.
+
+
+Aprendizajes y decisiones:
+Trabajar con clases en C++.
+
+
+Pendientes:
+Documentación del código.
+Terminar la función gen_path para resolver el laberinto usando aleatoriedad.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Camino principal.
+Fecha: 01 de enero, 2025
+Duración: 2 horas.
+Objetivo: Generar el camino principal desde el inicio hasta el final en el laberinto.
+
+
+Actividades:
+Creé una función para ello (gen_path), usando aleatoriedad.
+Arreglar bugs en donde el camino se ciclaba, se segmentaba o nunca llegaba al final.
+        
+Problemas:
+La función no está optimizada y no es tan clara ni directa como me gustaría.
+En ocasiones nunca se llega a la solución del laberinto.
+
+
+Hipótesis:
+Quizás basarse en la aleatoriedad no sea lo más práctico.
+
+
+Solución:
+Implementar otra forma de realizar el camino principal, probablemente usando backtracking o mejorando mi función.
+
+
+Aprendizajes y decisiones:
+Estoy tentado a usar backtracking. Necesito investigar más al respecto.
+
+Pendientes:
+Documentar el código y crear el diario técnico.
+Mejorar la función gen_path.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Título
+Fecha:
+Duración:
+Objetivo:
+Actividades:
+Problemas:
+Hipótesis:
+Solución:
+Aprendizajes y decisiones:
+Pendientes:

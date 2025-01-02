@@ -13,8 +13,8 @@ int main() {
 	
 	cout << endl << endl;  
 	     
-	//Solve s(m);
+	//Solve s(m); 
 	//s.print();
-	       
+	         
 	return 0;
 }
